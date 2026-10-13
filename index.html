@@ -1,0 +1,1982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hassan Pharmacy - Medicine List Generator</title>
+  <meta name="description" content="Fast keyboard-first medicine inventory and quotation list maker with inline editing, batch tracking, and instant PDF download for Hassan Pharmacy." />
+  
+  <!-- Embedded Web App Manifest for GitHub Pages Subpath & Standalone PWA Support -->
+  <link id="manifest-link" rel="manifest" href="data:application/manifest+json;charset=utf-8,%7B%22id%22%3A%22.%2F%22%2C%22name%22%3A%22Hassan%20Pharmacy%22%2C%22short_name%22%3A%22Pharmacy%22%2C%22description%22%3A%22Fast%20keyboard-first%20medicine%20inventory%20and%20quotation%20list%20maker%20for%20Hassan%20Pharmacy.%22%2C%22start_url%22%3A%22.%2F%22%2C%22scope%22%3A%22.%2F%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23ffffff%22%2C%22theme_color%22%3A%22%23ffffff%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%3Butf8%2C%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20192%20192'%20width%3D'192'%20height%3D'192'%3E%3Crect%20width%3D'192'%20height%3D'192'%20rx%3D'40'%20fill%3D'%23be185d'%2F%3E%3Cpath%20d%3D'M96%2040v112M40%2096h112'%20stroke%3D'%23ffffff'%20stroke-width%3D'28'%20stroke-linecap%3D'round'%2F%3E%3Ccircle%20cx%3D'96'%20cy%3D'96'%20r%3D'18'%20fill%3D'%23facc15'%2F%3E%3Ccircle%20cx%3D'96'%20cy%3D'96'%20r%3D'9'%20fill%3D'%23eab308'%2F%3E%3C%2Fsvg%3E%22%2C%22sizes%22%3A%22192x192%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%2C%22purpose%22%3A%22any%22%7D%2C%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%3Butf8%2C%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20512%20512'%20width%3D'512'%20height%3D'512'%3E%3Crect%20width%3D'512'%20height%3D'512'%20rx%3D'110'%20fill%3D'%23be185d'%2F%3E%3Cpath%20d%3D'M256%20100v312M100%20256h312'%20stroke%3D'%23ffffff'%20stroke-width%3D'75'%20stroke-linecap%3D'round'%2F%3E%3Ccircle%20cx%3D'256'%20cy%3D'256'%20r%3D'48'%20fill%3D'%23facc15'%2F%3E%3Ccircle%20cx%3D'256'%20cy%3D'256'%20r%3D'24'%20fill%3D'%23eab308'%2F%3E%3C%2Fsvg%3E%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%2C%22purpose%22%3A%22any%22%7D%2C%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%3Butf8%2C%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20512%20512'%20width%3D'512'%20height%3D'512'%3E%3Crect%20width%3D'512'%20height%3D'512'%20fill%3D'%23be185d'%2F%3E%3Cpath%20d%3D'M256%20120v272M120%20256h272'%20stroke%3D'%23ffffff'%20stroke-width%3D'65'%20stroke-linecap%3D'round'%2F%3E%3Ccircle%20cx%3D'256'%20cy%3D'256'%20r%3D'42'%20fill%3D'%23facc15'%2F%3E%3Ccircle%20cx%3D'256'%20cy%3D'256'%20r%3D'21'%20fill%3D'%23eab308'%2F%3E%3C%2Fsvg%3E%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%2C%22purpose%22%3A%22maskable%22%7D%5D%7D" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Pharmacy" />
+  <link id="apple-icon-link" rel="apple-touch-icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180' width='180' height='180'><rect width='180' height='180' rx='38' fill='%23be185d'/><path d='M90 38v104M38 90h104' stroke='%23ffffff' stroke-width='26' stroke-linecap='round'/><circle cx='90' cy='90' r='16' fill='%23facc15'/><circle cx='90' cy='90' r='8' fill='%23eab308'/></svg>" />
+  <link id="favicon-png" rel="icon" type="image/png" sizes="192x192" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192' width='192' height='192'><rect width='192' height='192' rx='40' fill='%23be185d'/><path d='M96 40v112M40 96h112' stroke='%23ffffff' stroke-width='28' stroke-linecap='round'/><circle cx='96' cy='96' r='18' fill='%23facc15'/><circle cx='96' cy='96' r='9' fill='%23eab308'/></svg>" />
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- jsPDF & jsPDF-AutoTable CDNs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #fdfbf9;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90' viewBox='0 0 90 90'%3E%3Cg fill='none'%3E%3Ccircle cx='25' cy='25' r='5' fill='%23f472b6' fill-opacity='0.16'/%3E%3Ccircle cx='21' cy='22' r='4' fill='%23f472b6' fill-opacity='0.14'/%3E%3Ccircle cx='29' cy='22' r='4' fill='%23f472b6' fill-opacity='0.14'/%3E%3Ccircle cx='22' cy='29' r='4' fill='%23f472b6' fill-opacity='0.14'/%3E%3Ccircle cx='28' cy='29' r='4' fill='%23f472b6' fill-opacity='0.14'/%3E%3Ccircle cx='25' cy='25' r='2.8' fill='%23facc15' fill-opacity='0.28'/%3E%3Ccircle cx='70' cy='70' r='4.5' fill='%23fde047' fill-opacity='0.18'/%3E%3Ccircle cx='66.5' cy='67.5' r='3.5' fill='%23fde047' fill-opacity='0.15'/%3E%3Ccircle cx='73.5' cy='67.5' r='3.5' fill='%23fde047' fill-opacity='0.15'/%3E%3Ccircle cx='67.5' cy='73.5' r='3.5' fill='%23fde047' fill-opacity='0.15'/%3E%3Ccircle cx='72.5' cy='73.5' r='3.5' fill='%23fde047' fill-opacity='0.15'/%3E%3Ccircle cx='70' cy='70' r='2.2' fill='%23ec4899' fill-opacity='0.22'/%3E%3Cellipse cx='68' cy='26' rx='3.5' ry='1.8' fill='%23fda4af' fill-opacity='0.14' transform='rotate(35 68 26)'/%3E%3Cellipse cx='28' cy='72' rx='3.2' ry='1.6' fill='%23fef08a' fill-opacity='0.2' transform='rotate(-40 28 72)'/%3E%3C/g%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-attachment: fixed;
+    }
+    .font-mono {
+      font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+    }
+    @media print {
+      header, form, .no-print, button, #toast, #save-modal, #clear-modal, #confirm-load-modal {
+        display: none !important;
+      }
+      body {
+        background-color: white !important;
+        background-image: none !important;
+        color: black !important;
+        padding: 0 !important;
+      }
+      .print-only {
+        display: block !important;
+      }
+      table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+      }
+      th, td {
+        border: 1px solid #cbd5e1 !important;
+        padding: 6px 10px !important;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen text-slate-800 antialiased selection:bg-pink-500 selection:text-white flex flex-col">
+
+  <!-- TOP HEADER WITH INLINE SVG FLOWER BANNER -->
+  <header class="relative border-b border-rose-200/80 bg-[#fffdfa]/95 backdrop-blur-xs shadow-xs overflow-hidden">
+    <!-- Inline SVG Flower Illustration Banner -->
+    <div class="pointer-events-none absolute inset-0 z-0 overflow-hidden select-none opacity-90" aria-hidden="true">
+      <svg class="absolute -right-10 -top-12 h-44 w-96 sm:right-10 sm:-top-8 sm:h-48 sm:w-[500px]" viewBox="0 0 500 180" fill="none">
+        <path d="M50 140 Q 180 80, 360 110 T 500 80" stroke="#86efac" stroke-width="3" stroke-linecap="round" stroke-opacity="0.4" />
+        <path d="M120 120 Q 240 60, 420 90" stroke="#bbf7d0" stroke-width="2" stroke-linecap="round" stroke-opacity="0.3" />
+        <ellipse cx="140" cy="98" rx="14" ry="7" fill="#86efac" fill-opacity="0.35" transform="rotate(-25 140 98)" />
+        <ellipse cx="270" cy="85" rx="16" ry="8" fill="#86efac" fill-opacity="0.35" transform="rotate(20 270 85)" />
+        <ellipse cx="380" cy="100" rx="15" ry="7" fill="#86efac" fill-opacity="0.3" transform="rotate(-30 380 100)" />
+        <!-- Pink Flower -->
+        <g transform="translate(180, 75)">
+          <circle cx="0" cy="-18" r="14" fill="#fda4af" fill-opacity="0.45" />
+          <circle cx="17" cy="-6" r="14" fill="#fda4af" fill-opacity="0.45" />
+          <circle cx="11" cy="15" r="14" fill="#fda4af" fill-opacity="0.45" />
+          <circle cx="-11" cy="15" r="14" fill="#fda4af" fill-opacity="0.45" />
+          <circle cx="-17" cy="-6" r="14" fill="#fda4af" fill-opacity="0.45" />
+          <circle cx="0" cy="0" r="12" fill="#f43f5e" fill-opacity="0.35" />
+          <circle cx="0" cy="0" r="8" fill="#facc15" fill-opacity="0.95" />
+          <circle cx="0" cy="0" r="4.5" fill="#eab308" />
+        </g>
+        <!-- Yellow Daisy -->
+        <g transform="translate(320, 95)">
+          <circle cx="0" cy="-15" r="11" fill="#fef08a" fill-opacity="0.7" />
+          <circle cx="14" cy="-5" r="11" fill="#fef08a" fill-opacity="0.7" />
+          <circle cx="9" cy="12" r="11" fill="#fef08a" fill-opacity="0.7" />
+          <circle cx="-9" cy="12" r="11" fill="#fef08a" fill-opacity="0.7" />
+          <circle cx="-14" cy="-5" r="11" fill="#fef08a" fill-opacity="0.7" />
+          <circle cx="0" cy="0" r="7.5" fill="#fb7185" fill-opacity="0.9" />
+          <circle cx="0" cy="0" r="4" fill="#f43f5e" />
+        </g>
+        <!-- Soft Pink Blossom -->
+        <g transform="translate(440, 60)">
+          <circle cx="0" cy="-14" r="10" fill="#fbcfe8" fill-opacity="0.6" />
+          <circle cx="13" cy="-4" r="10" fill="#fbcfe8" fill-opacity="0.6" />
+          <circle cx="8" cy="11" r="10" fill="#fbcfe8" fill-opacity="0.6" />
+          <circle cx="-8" cy="11" r="10" fill="#fbcfe8" fill-opacity="0.6" />
+          <circle cx="-13" cy="-4" r="10" fill="#fbcfe8" fill-opacity="0.6" />
+          <circle cx="0" cy="0" r="6" fill="#fde047" fill-opacity="0.95" />
+        </g>
+        <!-- Petals -->
+        <ellipse cx="230" cy="40" rx="9" ry="5" fill="#fda4af" fill-opacity="0.4" transform="rotate(35 230 40)" />
+        <ellipse cx="360" cy="50" rx="8" ry="4" fill="#fef08a" fill-opacity="0.5" transform="rotate(-20 360 50)" />
+        <ellipse cx="100" cy="80" rx="7" ry="4" fill="#fbcfe8" fill-opacity="0.35" transform="rotate(45 100 80)" />
+      </svg>
+    </div>
+
+    <div class="relative z-10 mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">
+      <div class="flex flex-col gap-3.5 lg:flex-row lg:items-center lg:justify-between">
+        
+        <!-- Brand Identity & Navigation Tabs -->
+        <div class="flex flex-wrap items-center justify-between gap-3 sm:gap-6">
+          <div class="flex items-center gap-3">
+            <div class="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-pink-500 to-rose-600 text-white shadow-xs ring-4 ring-rose-100/70">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none">
+                <path d="M19 10.5h-5.5V5a1.5 1.5 0 0 0-3 0v5.5H5a1.5 1.5 0 0 0 0 3h5.5V19a1.5 1.5 0 0 0 3 0v-5.5H19a1.5 1.5 0 0 0 0-3z" fill="currentColor" />
+                <circle cx="12" cy="12" r="2.8" fill="#facc15" />
+              </svg>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h1 class="text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">
+                  Hassan Pharmacy
+                </h1>
+                <span class="hidden text-xs font-semibold text-pink-700 bg-pink-100/70 px-2.5 py-0.5 rounded-full border border-pink-200/60 sm:inline">
+                  Dispensary & Stock
+                </span>
+              </div>
+              <p class="text-xs text-slate-500">
+                Fast keyboard-first medicine listing, batch tracking & PDF generator
+              </p>
+            </div>
+          </div>
+
+          <!-- View Switcher Tabs -->
+          <nav class="flex items-center rounded-xl bg-rose-50/70 p-1 text-xs font-medium border border-rose-100">
+            <button id="tab-editor" onclick="switchView('editor')" class="flex items-center gap-1.5 rounded-lg px-3 py-1.5 transition-all bg-white text-pink-900 font-bold shadow-xs cursor-pointer">
+              <svg class="h-4 w-4 text-pink-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+              <span>Current List</span>
+              <span id="badge-item-count" class="ml-1 rounded-full bg-pink-100 px-1.5 py-0.2 text-[10px] font-bold text-pink-800 hidden">0</span>
+            </button>
+            <button id="tab-history" onclick="switchView('history')" class="flex items-center gap-1.5 rounded-lg px-3 py-1.5 transition-all text-slate-600 hover:text-slate-900 cursor-pointer">
+              <svg class="h-4 w-4 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span>History</span>
+              <span id="badge-history-count" class="ml-1 rounded-full bg-amber-100 px-1.5 py-0.2 text-[10px] font-bold text-amber-900">0</span>
+            </button>
+          </nav>
+        </div>
+
+        <!-- Action Buttons -->
+        <div id="header-actions" class="flex flex-wrap items-center gap-2 sm:gap-2.5">
+          <button id="btn-sample" onclick="loadSampleList()" class="inline-flex items-center gap-1.5 rounded-xl border border-rose-200 bg-white px-3 py-2 text-xs font-medium text-slate-700 shadow-2xs hover:bg-rose-50 cursor-pointer">
+            <svg class="h-4 w-4 text-pink-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            <span>Load Sample</span>
+          </button>
+          <button id="btn-csv" onclick="exportCsv()" class="hidden inline-flex items-center gap-1.5 rounded-xl border border-rose-200/80 bg-white px-3 py-2 text-xs font-medium text-slate-700 shadow-2xs hover:bg-rose-50 cursor-pointer">
+            <svg class="h-4 w-4 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <span class="hidden sm:inline">CSV</span>
+          </button>
+          <button id="btn-print" onclick="window.print()" class="hidden inline-flex items-center gap-1.5 rounded-xl border border-rose-200/80 bg-white px-3 py-2 text-xs font-medium text-slate-700 shadow-2xs hover:bg-rose-50 cursor-pointer">
+            <svg class="h-4 w-4 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            <span class="hidden sm:inline">Print</span>
+          </button>
+          <button id="btn-save-list" onclick="openSaveModal()" class="hidden inline-flex items-center gap-1.5 rounded-xl border border-amber-300 bg-amber-100 px-3.5 py-2 text-xs font-bold text-amber-950 hover:bg-amber-200 shadow-2xs cursor-pointer">
+            <svg class="h-4 w-4 text-amber-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m19 21-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            <span>Save List</span>
+          </button>
+          <button id="btn-clear-list" onclick="openClearModal()" class="hidden inline-flex items-center gap-1.5 rounded-xl border border-rose-200 bg-rose-50/60 px-3 py-2 text-xs font-medium text-rose-700 hover:bg-rose-100 cursor-pointer">
+            <svg class="h-4 w-4 text-rose-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+            <span>Clear List</span>
+          </button>
+          <button id="btn-install-pwa" type="button" onclick="handlePWAInstallClick()" class="hidden inline-flex items-center gap-1.5 rounded-xl border border-pink-300 bg-pink-100/90 px-3 py-2 text-xs font-bold text-pink-900 hover:bg-pink-200 shadow-2xs transition-all cursor-pointer">
+            <svg class="h-4 w-4 text-pink-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 16v1a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-1m-4-4-4 4m0 0-4-4m4 4V4"/></svg>
+            <span id="btn-install-pwa-text">Install App</span>
+          </button>
+          <button id="btn-download-pdf" onclick="downloadCurrentPdf()" class="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-semibold text-white shadow-sm bg-slate-300 cursor-not-allowed opacity-75">
+            <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>Download PDF</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN VIEWPORT -->
+  <main class="flex-1 mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8 space-y-6">
+
+    <!-- Print Header Only -->
+    <div class="hidden print-only mb-6 text-center border-b pb-4">
+      <h1 class="text-2xl font-bold tracking-tight text-slate-900">HASSAN PHARMACY</h1>
+      <p class="text-sm text-slate-600">Medicine Dispensary & Inventory Record</p>
+      <p id="print-datetime" class="text-xs text-slate-500 mt-1"></p>
+    </div>
+
+    <!-- VIEW 1: ACTIVE EDITOR -->
+    <div id="view-editor" class="space-y-6">
+      
+      <!-- Key KPI Figures Strip -->
+      <div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <div class="rounded-2xl border border-rose-100 bg-[#fffdfa] p-3.5 shadow-2xs">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-500">Medicines</span>
+            <div class="flex h-7 w-7 items-center justify-center rounded-lg bg-pink-50 text-pink-600">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="m8.5 8.5 7 7"/></svg>
+            </div>
+          </div>
+          <p id="kpi-items" class="mt-1 text-xl font-bold tracking-tight text-slate-900 font-mono tabular-nums">0</p>
+          <span class="text-[11px] text-slate-400">Total lines</span>
+        </div>
+
+        <div class="rounded-2xl border border-amber-100 bg-[#fffdfa] p-3.5 shadow-2xs">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-500">Total Quantity</span>
+            <div class="flex h-7 w-7 items-center justify-center rounded-lg bg-amber-50 text-amber-600">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+            </div>
+          </div>
+          <p id="kpi-units" class="mt-1 text-xl font-bold tracking-tight text-slate-900 font-mono tabular-nums">0</p>
+          <span class="text-[11px] text-slate-400">Packs / units sum</span>
+        </div>
+
+        <div class="rounded-2xl border border-rose-100 bg-[#fffdfa] p-3.5 shadow-2xs">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-500">Avg Unit Price</span>
+            <div class="flex h-7 w-7 items-center justify-center rounded-lg bg-rose-50 text-rose-500">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg>
+            </div>
+          </div>
+          <p id="kpi-avg" class="mt-1 text-xl font-bold tracking-tight text-slate-900 font-mono tabular-nums">Rs. 0.00</p>
+          <span class="text-[11px] text-slate-400">Per unit average</span>
+        </div>
+
+        <div class="rounded-2xl border border-amber-300/80 bg-gradient-to-br from-amber-50/80 to-pink-50/60 p-3.5 shadow-2xs">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-amber-950">Grand Total</span>
+            <div class="flex h-7 w-7 items-center justify-center rounded-lg bg-pink-100 text-pink-700">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>
+            </div>
+          </div>
+          <p id="kpi-grand" class="mt-1 text-xl font-extrabold tracking-tight text-pink-900 font-mono tabular-nums">Rs. 0.00</p>
+          <span class="text-[11px] font-semibold text-pink-700">All medicines sum</span>
+        </div>
+      </div>
+
+      <!-- ENTRY FORM (Top of Page) -->
+      <section class="rounded-2xl border border-rose-100 bg-[#fffdfa] p-4 shadow-xs sm:p-6">
+        <div class="mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 border-b border-rose-100/70 pb-3">
+          <div>
+            <h2 class="text-base font-bold text-slate-900 sm:text-lg flex items-center gap-2">
+              <span>Fast Entry Form</span>
+              <span class="text-[11px] font-semibold text-pink-700 bg-pink-50 px-2.5 py-0.5 rounded-full border border-pink-200/80">
+                Keyboard Optimized
+              </span>
+            </h2>
+            <p class="text-xs text-slate-500">
+              Type values and press <kbd class="rounded bg-amber-50 px-1 py-0.5 text-[11px] font-mono text-amber-900 border border-amber-200">Enter ↵</kbd> to jump between fields; pressing Enter on Quantity adds the medicine.
+            </p>
+          </div>
+          <div id="live-line-total" class="hidden text-xs text-slate-600 sm:text-right">
+            Line Total: <span id="line-total-val" class="font-bold text-pink-700 font-mono tabular-nums">Rs. 0.00</span>
+          </div>
+        </div>
+
+        <form id="entry-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+          <div class="grid grid-cols-1 gap-3 sm:grid-cols-12 sm:gap-3.5">
+            
+            <!-- 1. Medicine Name -->
+            <div class="relative sm:col-span-4">
+              <label for="inp-name" class="mb-1 block text-xs font-semibold text-slate-700">
+                Medicine Name <span class="text-rose-500">*</span>
+              </label>
+              <div class="relative">
+                <input id="inp-name" type="text" autocomplete="off" placeholder="e.g. Augmentin 625mg Tab"
+                  class="w-full rounded-xl border border-rose-200/80 bg-white px-3.5 py-2.5 text-sm font-medium transition-all placeholder:text-slate-400 focus:border-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-500/20" />
+              </div>
+              <!-- Autocomplete suggestions dropdown -->
+              <div id="autocomplete-box" class="hidden absolute z-30 mt-1 max-h-56 w-full overflow-auto rounded-xl border border-rose-100 bg-[#fffdfa] py-1.5 shadow-lg ring-1 ring-black/5"></div>
+              <p id="err-name" class="hidden mt-1 text-[11px] font-medium text-rose-600">Please enter a medicine name.</p>
+            </div>
+
+            <!-- 2. Batch No -->
+            <div class="sm:col-span-2">
+              <label for="inp-batch" class="mb-1 block text-xs font-semibold text-slate-700">Batch No</label>
+              <input id="inp-batch" type="text" autocomplete="off" placeholder="e.g. B-9421"
+                class="w-full rounded-xl border border-rose-200/80 bg-white px-3.5 py-2.5 text-sm font-mono uppercase text-slate-900 transition-all placeholder:text-slate-400 placeholder:normal-case focus:border-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-500/20" />
+            </div>
+
+            <!-- 3. Expiry (MM/YY) -->
+            <div class="sm:col-span-2">
+              <label for="inp-expiry" class="mb-1 block text-xs font-semibold text-slate-700">
+                Expiry <span class="text-[10px] text-slate-400 font-normal">(MM/YY)</span>
+              </label>
+              <input id="inp-expiry" type="text" inputmode="numeric" autocomplete="off" placeholder="08/26" maxlength="5"
+                class="w-full rounded-xl border border-rose-200/80 bg-white px-3.5 py-2.5 text-sm font-mono text-slate-900 transition-all placeholder:text-slate-400 focus:border-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-500/20" />
+            </div>
+
+            <!-- 4. Retail Price -->
+            <div class="sm:col-span-2">
+              <label for="inp-price" class="mb-1 block text-xs font-semibold text-slate-700">Retail Price (Rs.)</label>
+              <input id="inp-price" type="number" step="any" min="0" autocomplete="off" placeholder="0.00"
+                class="w-full rounded-xl border border-rose-200/80 bg-white px-3.5 py-2.5 text-sm font-mono text-slate-900 transition-all placeholder:text-slate-400 focus:border-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-500/20" />
+            </div>
+
+            <!-- 5. Quantity -->
+            <div class="sm:col-span-2">
+              <label for="inp-qty" class="mb-1 block text-xs font-semibold text-slate-700">Quantity</label>
+              <div class="flex gap-2">
+                <input id="inp-qty" type="number" min="1" step="1" autocomplete="off" placeholder="Qty"
+                  class="w-full rounded-xl border border-rose-200/80 bg-white px-3.5 py-2.5 text-sm font-mono font-semibold text-slate-900 transition-all placeholder:text-slate-400 focus:border-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-500/20" />
+                <button type="submit" class="inline-flex shrink-0 items-center justify-center rounded-xl bg-pink-600 px-3.5 py-2.5 text-white shadow-xs hover:bg-pink-700 active:scale-95 transition-all cursor-pointer ring-2 ring-pink-500/20" title="Add to medicine list (Enter)">
+                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Shortcuts Hint -->
+          <div class="flex flex-wrap items-center justify-between gap-2 pt-1 text-[11px] text-slate-500">
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="flex items-center gap-1">
+                <kbd class="rounded border border-amber-200 bg-amber-50 px-1.5 py-0.5 font-mono text-[10px] text-amber-900">Enter ↵</kbd>
+                <span>Next Field / Add on Qty (blank = 1)</span>
+              </span>
+              <span class="flex items-center gap-1">
+                <kbd class="rounded border border-amber-200 bg-amber-50 px-1.5 py-0.5 font-mono text-[10px] text-amber-900">Shift + Enter</kbd>
+                <span>Instant Add from any field</span>
+              </span>
+            </div>
+            <div class="flex items-center gap-1 text-pink-700 font-medium">
+              <span>Auto-clears & focuses next item</span>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <!-- LIST TABLE (Below the Form) -->
+      <section class="rounded-2xl border border-rose-100 bg-[#fffdfa] shadow-xs overflow-hidden">
+        <!-- Table Controls Header -->
+        <div class="flex flex-col gap-3 border-b border-rose-100/70 p-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+          <div>
+            <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+              <span>Medicine List</span>
+              <span id="table-badge-count" class="text-xs font-semibold text-pink-700 bg-pink-50 px-2 py-0.5 rounded-full border border-pink-200/80 tabular-nums">0 items</span>
+            </h3>
+            <p class="text-xs text-slate-500">
+              Click any cell to edit inline. Changes update totals live.
+            </p>
+          </div>
+
+          <!-- Search Filter -->
+          <div id="search-container" class="relative w-full sm:w-64 hidden">
+            <svg class="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input id="inp-search" type="text" oninput="handleSearch(this.value)" placeholder="Search by name, batch, expiry..."
+              class="w-full rounded-xl border border-rose-200/80 bg-white py-1.5 pl-9 pr-3 text-xs text-slate-900 placeholder:text-slate-400 focus:border-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-500/20" />
+          </div>
+        </div>
+
+        <!-- Empty State -->
+        <div id="table-empty" class="flex flex-col items-center justify-center py-16 px-4 text-center">
+          <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-pink-50 text-pink-600 ring-8 ring-pink-50/50">
+            <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <h4 class="mt-4 text-sm font-semibold text-slate-900">No Medicines Added Yet</h4>
+          <p class="mt-1 max-w-sm text-xs text-slate-500">
+            Use the form above to type medicine name, batch, expiry, price and quantity. Press Enter to add!
+          </p>
+        </div>
+
+        <!-- Table View -->
+        <div id="table-wrapper" class="hidden overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="border-b border-rose-100 bg-rose-50/40 text-[11px] font-bold uppercase tracking-wider text-rose-950">
+                <th class="w-12 px-4 py-3 text-center">#</th>
+                <th class="min-w-[200px] px-4 py-3">Medicine Name</th>
+                <th class="w-32 px-4 py-3 text-center">Batch No</th>
+                <th class="w-28 px-4 py-3 text-center">Expiry</th>
+                <th class="w-32 px-4 py-3 text-right">Retail (Rs.)</th>
+                <th class="w-28 px-4 py-3 text-center">Qty</th>
+                <th class="w-36 px-4 py-3 text-right">Total (Rs.)</th>
+                <th class="w-16 px-4 py-3 text-center">Action</th>
+              </tr>
+            </thead>
+            <tbody id="table-tbody" class="divide-y divide-rose-50/80 text-xs"></tbody>
+            <tfoot>
+              <!-- Performance Pagination Strip -->
+              <tr id="row-pagination" class="hidden border-t border-rose-100 bg-[#fff9f6]">
+                <td colspan="8" class="px-4 py-3 sm:px-6">
+                  <div class="flex flex-wrap items-center justify-between gap-3 text-xs">
+                    <span id="text-pagination-showing" class="font-medium text-slate-600">Showing 10 of 10 items</span>
+                    <div class="flex items-center gap-2">
+                      <button id="btn-show-more" type="button" onclick="showMoreItems()" class="inline-flex items-center gap-1 rounded-xl border border-pink-200 bg-pink-50 px-3.5 py-1.5 font-semibold text-pink-700 hover:bg-pink-100 transition-colors cursor-pointer shadow-2xs">
+                        Show more (+10)
+                      </button>
+                      <button id="btn-show-less" type="button" onclick="showLessItems()" class="inline-flex items-center gap-1 rounded-xl border border-slate-200 bg-white px-3 py-1.5 font-semibold text-slate-600 hover:bg-slate-50 transition-colors cursor-pointer shadow-2xs">
+                        Show less
+                      </button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <!-- Grand Total Row -->
+              <tr class="border-t-2 border-rose-200 bg-rose-50/50 font-bold text-slate-900 text-xs">
+                <td id="foot-item-count" class="px-4 py-4 text-center text-slate-500 font-mono">0</td>
+                <td class="px-4 py-4 uppercase tracking-wider text-slate-800">Grand Total</td>
+                <td class="px-4 py-4 text-center text-slate-400">—</td>
+                <td class="px-4 py-4 text-center text-slate-400">—</td>
+                <td class="px-4 py-4 text-right text-slate-500">—</td>
+                <td id="foot-total-units" class="px-4 py-4 text-center font-mono text-sm text-slate-900 tabular-nums">0</td>
+                <td id="foot-grand-total" class="px-4 py-4 text-right font-mono text-base font-extrabold text-pink-700 tabular-nums">Rs. 0.00</td>
+                <td class="px-4 py-4"></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- VIEW 2: SAVED LISTS HISTORY -->
+    <div id="view-history" class="hidden space-y-4">
+      <div class="flex flex-col gap-2 rounded-2xl border border-slate-200 bg-white p-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 shadow-xs">
+        <div>
+          <div class="flex items-center gap-2">
+            <h3 class="text-base font-bold text-slate-900">Saved Lists History</h3>
+            <span id="history-header-badge" class="text-xs font-semibold text-amber-900 bg-amber-100 px-2.5 py-0.5 rounded-full border border-amber-200 tabular-nums">0 / 10 Saved</span>
+          </div>
+          <p class="text-xs text-slate-500">
+            Automatically retains the latest 10 lists. Oldest list is replaced when an 11th is saved.
+          </p>
+        </div>
+        <button id="btn-clear-history" onclick="openClearHistoryModal()" class="inline-flex items-center gap-1.5 rounded-xl border border-rose-200 bg-rose-50/50 px-3 py-2 text-xs font-medium text-rose-700 hover:bg-rose-100 cursor-pointer self-start sm:self-auto">
+          <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          <span>Clear History</span>
+        </button>
+      </div>
+
+      <!-- History Cards Container -->
+      <div id="history-container" class="grid gap-3.5"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="pt-6 pb-8 border-t border-rose-200/80 text-xs text-slate-500">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-2">
+          <svg class="h-4 w-4 text-pink-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>Auto-saved to local device · Works completely offline · Max 10 lists history</span>
+        </div>
+        <div class="flex items-center gap-2 text-slate-400">
+          <span class="text-amber-500">✿</span>
+          <span>Hassan Pharmacy · App built by M.Nouman 141</span>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- MODAL: SAVE LIST TO HISTORY -->
+  <div id="save-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs">
+    <div class="w-full max-w-md rounded-2xl border border-rose-100 bg-[#fffdfa] p-6 shadow-2xl">
+      <div class="flex items-start justify-between">
+        <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-amber-100 text-amber-800 ring-4 ring-amber-50">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m19 21-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <button onclick="closeSaveModal()" class="rounded-lg p-1 text-slate-400 hover:bg-rose-50 hover:text-rose-600 cursor-pointer">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="mt-4">
+        <h3 class="text-lg font-bold text-slate-900">Save Current List to History</h3>
+        <p class="mt-1 text-xs text-slate-500 leading-relaxed">
+          This will archive your current medicine list into History with timestamp, keeping up to 10 latest lists, and then start a fresh empty list.
+        </p>
+        <div class="mt-3.5 flex items-center justify-between rounded-xl bg-amber-50/60 p-3 text-xs border border-amber-200/60">
+          <div>
+            <span class="text-slate-500 block text-[10px] uppercase font-semibold">Summary</span>
+            <span id="save-modal-summary" class="font-bold text-slate-800">0 medicines (0 units)</span>
+          </div>
+          <div class="text-right">
+            <span class="text-slate-500 block text-[10px] uppercase font-semibold">Total</span>
+            <span id="save-modal-total" class="font-mono font-bold text-pink-700">Rs. 0.00</span>
+          </div>
+        </div>
+        <form onsubmit="handleConfirmSave(event)" class="mt-4">
+          <label for="inp-save-title" class="block text-xs font-semibold text-slate-700 mb-1">
+            List Title / Note <span class="text-slate-400 font-normal">(optional)</span>
+          </label>
+          <input id="inp-save-title" type="text" placeholder="e.g. Morning Counter Dispensary"
+            class="w-full rounded-xl border border-rose-200/80 bg-white px-3.5 py-2.5 text-xs text-slate-900 focus:border-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-500/20" />
+          <div class="mt-6 flex items-center justify-end gap-3">
+            <button type="button" onclick="closeSaveModal()" class="rounded-xl border border-rose-200 bg-white px-4 py-2.5 text-xs font-semibold text-slate-700 hover:bg-rose-50 cursor-pointer">
+              Cancel
+            </button>
+            <button type="submit" class="inline-flex items-center gap-1.5 rounded-xl bg-pink-600 px-4 py-2.5 text-xs font-semibold text-white shadow-xs hover:bg-pink-700 cursor-pointer">
+              Save & Start New List
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: CLEAR ACTIVE LIST -->
+  <div id="clear-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs">
+    <div class="w-full max-w-md rounded-2xl border border-rose-100 bg-[#fffdfa] p-6 shadow-2xl">
+      <div class="flex items-start justify-between">
+        <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-rose-100 text-rose-600">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <button onclick="closeClearModal()" class="rounded-lg p-1 text-slate-400 hover:bg-slate-100 cursor-pointer">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="mt-4">
+        <h3 class="text-lg font-bold text-slate-900">Clear Current Medicine List?</h3>
+        <p id="clear-modal-msg" class="mt-2 text-xs text-slate-500 leading-relaxed">
+          Are you sure you want to delete all items from the current list? If you want to keep them, click "Save List" first.
+        </p>
+      </div>
+      <div class="mt-6 flex items-center justify-end gap-3">
+        <button type="button" onclick="closeClearModal()" class="rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 cursor-pointer">
+          Cancel
+        </button>
+        <button type="button" onclick="confirmClearList()" class="inline-flex items-center gap-1.5 rounded-xl bg-rose-600 px-4 py-2.5 text-xs font-semibold text-white shadow-xs hover:bg-rose-700 cursor-pointer">
+          Yes, Clear Current List
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: CLEAR HISTORY -->
+  <div id="clear-history-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs">
+    <div class="w-full max-w-md rounded-2xl border border-rose-100 bg-[#fffdfa] p-6 shadow-2xl">
+      <div class="flex items-start justify-between">
+        <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-rose-100 text-rose-600">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+        </div>
+        <button onclick="closeClearHistoryModal()" class="rounded-lg p-1 text-slate-400 hover:bg-slate-100 cursor-pointer">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="mt-4">
+        <h3 class="text-lg font-bold text-slate-900">Clear All Saved History?</h3>
+        <p class="mt-2 text-xs text-slate-500 leading-relaxed">
+          Are you sure you want to delete all saved lists from History? This action cannot be undone.
+        </p>
+      </div>
+      <div class="mt-6 flex items-center justify-end gap-3">
+        <button type="button" onclick="closeClearHistoryModal()" class="rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 cursor-pointer">
+          Cancel
+        </button>
+        <button type="button" onclick="confirmClearHistory()" class="inline-flex items-center gap-1.5 rounded-xl bg-rose-600 px-4 py-2.5 text-xs font-semibold text-white shadow-xs hover:bg-rose-700 cursor-pointer">
+          Yes, Delete All History
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: CONFIRM REPLACE ACTIVE LIST WHEN OPENING FROM HISTORY -->
+  <div id="confirm-load-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs">
+    <div class="w-full max-w-md rounded-2xl border border-rose-100 bg-[#fffdfa] p-6 shadow-2xl">
+      <div class="flex items-start justify-between">
+        <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-amber-100 text-amber-800">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 15-6-6-6 6"/></svg>
+        </div>
+        <button onclick="closeConfirmLoadModal()" class="rounded-lg p-1 text-slate-400 hover:bg-slate-100 cursor-pointer">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="mt-4">
+        <h3 class="text-lg font-bold text-slate-900">Replace Current List in Editor?</h3>
+        <p id="confirm-load-msg" class="mt-2 text-xs text-slate-500 leading-relaxed"></p>
+      </div>
+      <div class="mt-6 flex items-center justify-end gap-3">
+        <button type="button" onclick="closeConfirmLoadModal()" class="rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 cursor-pointer">
+          Cancel
+        </button>
+        <button type="button" onclick="confirmLoadFromHistory()" class="inline-flex items-center gap-1.5 rounded-xl bg-pink-600 px-4 py-2.5 text-xs font-semibold text-white shadow-xs hover:bg-pink-700 cursor-pointer">
+          Load This List
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: IOS INSTALL GUIDE -->
+  <div id="ios-install-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs">
+    <div class="w-full max-w-sm rounded-2xl border border-rose-100 bg-[#fffdfa] p-6 shadow-2xl">
+      <div class="flex items-start justify-between">
+        <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-pink-100 text-pink-800 ring-4 ring-pink-50">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 16v1a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-1m-4-4-4 4m0 0-4-4m4 4V4"/></svg>
+        </div>
+        <button onclick="closeIOSInstallModal()" class="rounded-lg p-1 text-slate-400 hover:bg-rose-50 hover:text-rose-600 cursor-pointer">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="mt-4">
+        <h3 class="text-base font-bold text-slate-900">Install on iPhone / iPad</h3>
+        <p class="mt-2 text-xs text-slate-600 leading-relaxed">
+          1. Tap the <span class="font-semibold text-pink-700">Share</span> button <svg class="inline h-3.5 w-3.5 text-pink-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg> in Safari toolbar.<br />
+          2. Scroll down and tap <span class="font-semibold text-pink-700">"Add to Home Screen"</span>.<br />
+          3. Tap <span class="font-semibold text-pink-700">"Add"</span> to launch Hassan Pharmacy anytime!
+        </p>
+      </div>
+      <div class="mt-5 flex justify-end">
+        <button type="button" onclick="closeIOSInstallModal()" class="w-full rounded-xl bg-pink-600 px-4 py-2.5 text-xs font-semibold text-white hover:bg-pink-700 cursor-pointer">
+          Got it
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- OFFLINE STATUS INDICATOR -->
+  <div id="offline-indicator" class="hidden fixed bottom-5 left-5 z-50 flex items-center gap-2 rounded-2xl border border-amber-300 bg-amber-50 px-3.5 py-2 text-xs font-bold text-amber-900 shadow-lg ring-2 ring-amber-400/20">
+    <span class="h-2.5 w-2.5 rounded-full bg-amber-500 animate-pulse"></span>
+    <span>Offline Mode — Cached data active</span>
+  </div>
+
+  <!-- FLOATING TOAST -->
+  <div id="toast" class="hidden fixed bottom-5 right-5 z-50 flex items-center gap-2 rounded-2xl border border-pink-200 bg-slate-900/95 px-4 py-3 text-xs font-semibold text-white shadow-xl ring-2 ring-pink-500/20">
+    <svg class="h-4 w-4 text-pink-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+    <span id="toast-text"></span>
+  </div>
+
+  <!-- APPLICATION JAVASCRIPT LOGIC (100% Client-side, Vanilla JS, Zero Build) -->
+  <script>
+    // --- STORAGE KEYS ---
+    const STORAGE_ITEMS = 'hassan_pharmacy_medicine_list_v1';
+    const STORAGE_HISTORY = 'hassan_pharmacy_saved_lists_v1';
+    const STORAGE_NAME_DICT = 'hassan_pharmacy_name_history_v1';
+    const STORAGE_INIT = 'hassan_pharmacy_initialized_v1';
+
+    // Standard medicine formulary for instant snappy autocomplete
+    const COMMON_MEDICINES = [
+      'Augmentin 625mg Tab', 'Augmentin 1g Tab', 'Amoxicillin 500mg Cap',
+      'Panadol 500mg Tab', 'Panadol Extra Tab', 'Panadol CF Tab',
+      'Paracetamol 500mg Tab', 'Brufen 400mg Tab', 'Brufen 600mg Tab',
+      'Ibuprofen 400mg Tab', 'Omeprazole 20mg Cap', 'Omeprazole 40mg Cap',
+      'Risek 20mg Cap', 'Risek 40mg Cap', 'Nexum 20mg Tab', 'Nexum 40mg Tab',
+      'Ciprofloxacin 500mg Tab', 'Metformin 500mg Tab', 'Metformin 850mg Tab',
+      'Cetirizine 10mg Tab', 'Softin 10mg Tab', 'Azithromycin 500mg Tab',
+      'Disprin 300mg Tab', 'Loprin 75mg Tab', 'Flagyl 400mg Tab',
+      'Arinac Forte Tab', 'Calpol 120mg/5ml Syr', 'Surbex Z Tab', 'Neurobion Tab',
+      'Cefspan 400mg Cap', 'Gaviscon Liquid 120ml', 'Voltral 50mg Tab',
+      'Entamizole Tab', 'Gravinate 50mg Tab', 'Buscopan 10mg Tab',
+      'Leflox 500mg Tab', 'Lipitor 20mg Tab', 'Concor 5mg Tab', 'Norvasc 5mg Tab',
+      'Ventolin Inhaler 100mcg', 'Polyfax Eye Ointment', 'Betnovate-N Cream 20g'
+    ];
+
+    const INITIAL_SAMPLE = [
+      { id: 'm-1', name: 'Augmentin 625mg Tab', batch: 'B-7492', expiry: '11/26', retailPrice: 420.0, quantity: 10 },
+      { id: 'm-2', name: 'Panadol Extra Tab', batch: 'PX-9912', expiry: '04/27', retailPrice: 55.0, quantity: 25 },
+      { id: 'm-3', name: 'Omeprazole 20mg Cap', batch: 'OM-3301', expiry: '09/26', retailPrice: 280.0, quantity: 15 },
+      { id: 'm-4', name: 'Ciprofloxacin 500mg Tab', batch: 'CP-1044', expiry: '02/27', retailPrice: 350.0, quantity: 8 }
+    ];
+
+    // --- APPLICATION STATE ---
+    let items = [];
+    let savedLists = [];
+    let customNames = [];
+    let currentView = 'editor';
+    let visibleCount = 10;
+    let searchQuery = '';
+    let pendingLoadRecord = null;
+    let toastTimeout = null;
+
+    // --- INITIALIZATION ---
+    window.addEventListener('DOMContentLoaded', () => {
+      setupEmbeddedManifest();
+      loadStoredData();
+      initExpiryInput();
+      initKeyboardNavigation();
+      initAutocomplete();
+      initPWAInstall();
+      initOnlineStatus();
+      initEmbeddedServiceWorker();
+      renderAll();
+      document.getElementById('inp-name')?.focus();
+    });
+
+    function loadStoredData() {
+      try {
+        const savedItm = localStorage.getItem(STORAGE_ITEMS);
+        if (savedItm) {
+          const parsed = JSON.parse(savedItm);
+          items = Array.isArray(parsed) ? parsed.map(i => ({ ...i, expiry: normalizeExpiry(i.expiry || '') })) : [];
+        } else if (!localStorage.getItem(STORAGE_INIT)) {
+          localStorage.setItem(STORAGE_INIT, 'true');
+          items = [...INITIAL_SAMPLE];
+        }
+
+        const savedHist = localStorage.getItem(STORAGE_HISTORY);
+        if (savedHist) {
+          const parsed = JSON.parse(savedHist);
+          savedLists = Array.isArray(parsed) ? parsed.slice(0, 10) : [];
+        }
+
+        const savedDict = localStorage.getItem(STORAGE_NAME_DICT);
+        if (savedDict) {
+          customNames = JSON.parse(savedDict) || [];
+        }
+      } catch (e) {
+        console.error('Storage init error', e);
+      }
+    }
+
+    function saveItems() {
+      try {
+        localStorage.setItem(STORAGE_ITEMS, JSON.stringify(items));
+      } catch (e) { console.error(e); }
+    }
+
+    function saveHistory() {
+      try {
+        localStorage.setItem(STORAGE_HISTORY, JSON.stringify(savedLists.slice(0, 10)));
+      } catch (e) { console.error(e); }
+    }
+
+    function saveDict() {
+      try {
+        localStorage.setItem(STORAGE_NAME_DICT, JSON.stringify(customNames));
+      } catch (e) { console.error(e); }
+    }
+
+    // --- FORMATTERS ---
+    function formatCurrency(num) {
+      const val = Number(num) || 0;
+      return 'Rs. ' + val.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function getCurrentDateTime() {
+      const now = new Date();
+      const dateStr = now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+      const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+      return { dateStr, timeStr, fullStr: `${dateStr} · ${timeStr}` };
+    }
+
+    function normalizeExpiry(raw) {
+      if (!raw) return '';
+      const clean = raw.trim().replace(/[-.]/g, '/');
+      if (/^\d{2}\/\d{2}$/.test(clean)) return clean;
+      if (/^\d{2}\/\d{4}$/.test(clean)) {
+        const [m, y] = clean.split('/');
+        return `${m}/${y.slice(-2)}`;
+      }
+      if (/^\d{4}$/.test(clean)) return `${clean.slice(0, 2)}/${clean.slice(2, 4)}`;
+      if (/^\d{3}$/.test(clean)) return `0${clean[0]}/${clean.slice(1, 3)}`;
+      return clean;
+    }
+
+    // --- EXPIRY FIELD AUTO-FORMAT ---
+    function formatExpiryDigits(digits) {
+      if (!digits) return { formatted: '', isComplete: false };
+      if (digits.length === 1) return { formatted: digits, isComplete: false };
+      if (digits.length === 2) {
+        const [d1, d2] = digits;
+        if (d1 === '0') {
+          if (d2 === '0') return { formatted: '0', isComplete: false };
+          return { formatted: `0${d2}/`, isComplete: false };
+        }
+        if (d1 === '1') {
+          if (d2 === '0' || d2 === '1' || d2 === '2') return { formatted: `1${d2}/`, isComplete: false };
+          return { formatted: `01/${d2}`, isComplete: false };
+        }
+        return { formatted: `0${d1}/${d2}`, isComplete: false };
+      }
+      if (digits.length === 3) {
+        const [d1, d2, d3] = digits;
+        if (d1 === '0') {
+          if (d2 === '0') return { formatted: '0', isComplete: false };
+          return { formatted: `0${d2}/${d3}`, isComplete: false };
+        }
+        if (d1 === '1') {
+          if (d2 === '0' || d2 === '1' || d2 === '2') return { formatted: `1${d2}/${d3}`, isComplete: false };
+          return { formatted: `01/${d2}${d3}`, isComplete: true };
+        }
+        return { formatted: `0${d1}/${d2}${d3}`, isComplete: true };
+      }
+      if (digits.length >= 4) {
+        const [d1, d2, d3, d4] = digits;
+        let mm = `${d1}${d2}`;
+        const yy = `${d3}${d4}`;
+        if (d1 === '0') {
+          if (d2 === '0') mm = '01';
+          return { formatted: `${mm}/${yy}`, isComplete: true };
+        }
+        if (d1 === '1') {
+          if (d2 === '0' || d2 === '1' || d2 === '2') return { formatted: `${mm}/${yy}`, isComplete: true };
+          return { formatted: `01/${d2}${d3}`, isComplete: true };
+        }
+        return { formatted: `0${d1}/${d2}${d3}`, isComplete: true };
+      }
+      return { formatted: '', isComplete: false };
+    }
+
+    function initExpiryInput() {
+      const expInp = document.getElementById('inp-expiry');
+      if (!expInp) return;
+
+      expInp.addEventListener('keydown', (e) => {
+        if (e.key === '/' || e.key === '.') {
+          e.preventDefault();
+          return;
+        }
+        if (e.key === 'Backspace' && expInp.value.endsWith('/')) {
+          e.preventDefault();
+          expInp.value = expInp.value.slice(0, 1);
+          return;
+        }
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          if (e.shiftKey) {
+            handleFormSubmit();
+            return;
+          }
+          if (expInp.value) expInp.value = normalizeExpiry(expInp.value);
+          document.getElementById('inp-price')?.focus();
+        }
+      });
+
+      expInp.addEventListener('input', (e) => {
+        const digits = e.target.value.replace(/\D/g, '').slice(0, 4);
+        if (!digits) {
+          expInp.value = '';
+          return;
+        }
+        const { formatted, isComplete } = formatExpiryDigits(digits);
+        expInp.value = formatted;
+        if (isComplete || formatted.length === 5) {
+          setTimeout(() => {
+            const prInp = document.getElementById('inp-price');
+            prInp?.focus();
+            prInp?.select();
+          }, 10);
+        }
+      });
+    }
+
+    // --- KEYBOARD PROGRESSION & FORM SUBMISSION ---
+    function initKeyboardNavigation() {
+      const nameInp = document.getElementById('inp-name');
+      const batchInp = document.getElementById('inp-batch');
+      const priceInp = document.getElementById('inp-price');
+      const qtyInp = document.getElementById('inp-qty');
+
+      nameInp?.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          if (e.shiftKey) { handleFormSubmit(); return; }
+          closeAutocomplete();
+          batchInp?.focus();
+        }
+      });
+
+      batchInp?.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          if (e.shiftKey) { handleFormSubmit(); return; }
+          document.getElementById('inp-expiry')?.focus();
+        }
+      });
+
+      priceInp?.addEventListener('input', updateLiveLineTotal);
+      priceInp?.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          if (e.shiftKey) { handleFormSubmit(); return; }
+          qtyInp?.focus();
+          qtyInp?.select();
+        }
+      });
+
+      qtyInp?.addEventListener('input', updateLiveLineTotal);
+      qtyInp?.addEventListener('focus', () => qtyInp.select());
+      qtyInp?.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          handleFormSubmit();
+        }
+      });
+    }
+
+    function updateLiveLineTotal() {
+      const pr = parseFloat(document.getElementById('inp-price').value) || 0;
+      const qt = parseInt(document.getElementById('inp-qty').value.trim(), 10) || 1;
+      const nm = document.getElementById('inp-name').value.trim();
+      const wrap = document.getElementById('live-line-total');
+      const val = document.getElementById('line-total-val');
+      if (nm && pr >= 0) {
+        wrap.classList.remove('hidden');
+        val.textContent = formatCurrency(pr * qt);
+      } else {
+        wrap.classList.add('hidden');
+      }
+    }
+
+    function handleFormSubmit(e) {
+      if (e) e.preventDefault();
+      const nameInp = document.getElementById('inp-name');
+      const batchInp = document.getElementById('inp-batch');
+      const expInp = document.getElementById('inp-expiry');
+      const priceInp = document.getElementById('inp-price');
+      const qtyInp = document.getElementById('inp-qty');
+      const errName = document.getElementById('err-name');
+
+      const name = nameInp.value.trim();
+      if (!name) {
+        errName.classList.remove('hidden');
+        nameInp.focus();
+        return;
+      }
+      errName.classList.add('hidden');
+
+      const retailPrice = parseFloat(priceInp.value) || 0;
+      // QUANTITY FIX: use exactly what user typed; empty means 1
+      const rawQty = qtyInp.value.trim();
+      const parsedQty = parseInt(rawQty, 10);
+      const quantity = (!isNaN(parsedQty) && parsedQty > 0) ? parsedQty : 1;
+
+      const expiry = normalizeExpiry(expInp.value);
+      const batch = batchInp.value.trim().toUpperCase();
+
+      const newItem = {
+        id: 'itm-' + Date.now() + '-' + Math.floor(Math.random() * 1000),
+        name,
+        batch,
+        expiry,
+        retailPrice,
+        quantity
+      };
+
+      items.unshift(newItem);
+      saveItems();
+
+      // Remember medicine name
+      if (!customNames.includes(name)) {
+        customNames.unshift(name);
+        if (customNames.length > 500) customNames.pop();
+        saveDict();
+      }
+
+      // Reset fields
+      nameInp.value = '';
+      batchInp.value = '';
+      expInp.value = '';
+      priceInp.value = '';
+      qtyInp.value = ''; // Empty placeholder "Qty"
+      document.getElementById('live-line-total').classList.add('hidden');
+      closeAutocomplete();
+
+      showToast(`Added "${name}" (${quantity}x = ${formatCurrency(retailPrice * quantity)})`);
+      renderAll();
+
+      // Auto-focus back to Medicine Name
+      requestAnimationFrame(() => {
+        nameInp.focus();
+      });
+    }
+
+    // --- AUTOCOMPLETE ---
+    function initAutocomplete() {
+      const nameInp = document.getElementById('inp-name');
+      const box = document.getElementById('autocomplete-box');
+
+      nameInp?.addEventListener('input', (e) => {
+        const q = e.target.value.trim().toLowerCase();
+        document.getElementById('err-name').classList.add('hidden');
+        updateLiveLineTotal();
+        if (!q) { closeAutocomplete(); return; }
+
+        const pool = Array.from(new Set([...customNames, ...items.map(i => i.name), ...COMMON_MEDICINES]));
+        const matches = pool.filter(m => m.toLowerCase().includes(q)).slice(0, 7);
+
+        if (matches.length === 0) { closeAutocomplete(); return; }
+
+        box.innerHTML = `
+          <div class="px-3 py-1 text-[10px] font-semibold text-slate-400 uppercase tracking-wider flex justify-between">
+            <span>Suggestions</span>
+            <span>Click to select</span>
+          </div>
+          ${matches.map(m => `
+            <button type="button" onclick="selectSuggestion('${m.replace(/'/g, "\\'")}')"
+              class="w-full text-left px-3 py-1.5 text-xs text-slate-700 hover:bg-pink-50 hover:text-pink-900 transition-colors cursor-pointer">
+              ${m}
+            </button>
+          `).join('')}
+        `;
+        box.classList.remove('hidden');
+      });
+
+      document.addEventListener('mousedown', (e) => {
+        if (!box.contains(e.target) && e.target !== nameInp) {
+          closeAutocomplete();
+        }
+      });
+    }
+
+    function selectSuggestion(val) {
+      document.getElementById('inp-name').value = val;
+      closeAutocomplete();
+      setTimeout(() => {
+        document.getElementById('inp-batch')?.focus();
+      }, 10);
+    }
+
+    function closeAutocomplete() {
+      const box = document.getElementById('autocomplete-box');
+      if (box) box.classList.add('hidden');
+    }
+
+    // --- QUANTITY STEPPERS & INLINE EDITING ---
+    function stepQuantity(id, delta) {
+      const item = items.find(i => i.id === id);
+      if (!item) return;
+      const current = Number(item.quantity) || 1;
+      const next = current + delta;
+      if (next >= 1) {
+        item.quantity = next;
+        saveItems();
+        renderAll();
+      }
+    }
+
+    function deleteItem(id) {
+      const target = items.find(i => i.id === id);
+      items = items.filter(i => i.id !== id);
+      saveItems();
+      renderAll();
+      if (target) showToast(`Removed "${target.name}"`);
+    }
+
+    function startInlineEdit(id, field, el) {
+      const item = items.find(i => i.id === id);
+      if (!item) return;
+
+      const currentVal = item[field] !== undefined ? item[field] : '';
+      const input = document.createElement('input');
+      input.type = (field === 'retailPrice' || field === 'quantity') ? 'number' : 'text';
+      if (field === 'retailPrice') { input.step = 'any'; input.min = '0'; }
+      if (field === 'quantity') { input.min = '1'; input.step = '1'; }
+      if (field === 'expiry') { input.placeholder = 'MM/YY'; input.maxLength = 5; }
+      input.value = currentVal;
+      input.className = 'w-full rounded-lg border border-pink-500 bg-white px-2 py-1 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-pink-500/30';
+
+      const commit = () => {
+        let val = input.value.trim();
+        if (field === 'retailPrice') item.retailPrice = Math.max(0, parseFloat(val) || 0);
+        else if (field === 'quantity') item.quantity = Math.max(1, parseInt(val, 10) || 1);
+        else if (field === 'expiry') item.expiry = normalizeExpiry(val);
+        else if (field === 'batch') item.batch = val.toUpperCase();
+        else if (field === 'name' && val) item.name = val;
+        saveItems();
+        renderAll();
+      };
+
+      input.addEventListener('blur', commit);
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') { e.preventDefault(); input.blur(); }
+        if (e.key === 'Escape') { e.preventDefault(); renderAll(); }
+      });
+
+      el.innerHTML = '';
+      el.appendChild(input);
+      input.focus();
+      input.select();
+    }
+
+    // --- SEARCH & PAGINATION (SHOW MORE / SHOW LESS) ---
+    function handleSearch(val) {
+      searchQuery = (val || '').toLowerCase();
+      visibleCount = 10;
+      renderTable();
+    }
+
+    function showMoreItems() {
+      visibleCount += 10;
+      renderTable();
+    }
+
+    function showLessItems() {
+      visibleCount = 10;
+      renderTable();
+    }
+
+    // --- RENDER TABLE & METRICS ---
+    function renderAll() {
+      renderTable();
+      renderKPIs();
+      renderHistoryView();
+    }
+
+    function renderKPIs() {
+      const totalUnits = items.reduce((acc, i) => acc + (Number(i.quantity) || 0), 0);
+      const grandTotal = items.reduce((acc, i) => acc + (Number(i.retailPrice) || 0) * (Number(i.quantity) || 0), 0);
+
+      document.getElementById('kpi-items').textContent = items.length;
+      document.getElementById('kpi-units').textContent = totalUnits;
+      document.getElementById('kpi-avg').textContent = totalUnits > 0 ? formatCurrency(grandTotal / totalUnits) : 'Rs. 0.00';
+      document.getElementById('kpi-grand').textContent = formatCurrency(grandTotal);
+
+      // Header button states
+      const hasItems = items.length > 0;
+      document.getElementById('badge-item-count').textContent = items.length;
+      document.getElementById('badge-item-count').classList.toggle('hidden', !hasItems);
+      document.getElementById('badge-history-count').textContent = savedLists.length;
+
+      document.getElementById('btn-sample').classList.toggle('hidden', hasItems);
+      document.getElementById('btn-csv').classList.toggle('hidden', !hasItems);
+      document.getElementById('btn-print').classList.toggle('hidden', !hasItems);
+      document.getElementById('btn-save-list').classList.toggle('hidden', !hasItems);
+      document.getElementById('btn-clear-list').classList.toggle('hidden', !hasItems);
+
+      const pdfBtn = document.getElementById('btn-download-pdf');
+      if (hasItems) {
+        pdfBtn.className = 'inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-semibold text-white shadow-sm bg-pink-600 hover:bg-pink-700 active:scale-95 ring-2 ring-pink-500/20 cursor-pointer';
+        pdfBtn.disabled = false;
+      } else {
+        pdfBtn.className = 'inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-semibold text-white shadow-sm bg-slate-300 cursor-not-allowed opacity-75';
+        pdfBtn.disabled = true;
+      }
+
+      // Print timestamp
+      const printDt = document.getElementById('print-datetime');
+      if (printDt) printDt.textContent = 'Generated: ' + getCurrentDateTime().fullStr;
+    }
+
+    function renderTable() {
+      const tbody = document.getElementById('table-tbody');
+      const tableWrapper = document.getElementById('table-wrapper');
+      const emptyState = document.getElementById('table-empty');
+      const searchBox = document.getElementById('search-container');
+      const countBadge = document.getElementById('table-badge-count');
+
+      countBadge.textContent = `${items.length} ${items.length === 1 ? 'item' : 'items'}`;
+
+      if (items.length === 0) {
+        tableWrapper.classList.add('hidden');
+        emptyState.classList.remove('hidden');
+        searchBox.classList.add('hidden');
+        return;
+      }
+
+      tableWrapper.classList.remove('hidden');
+      emptyState.classList.add('hidden');
+      searchBox.classList.remove('hidden');
+
+      // Filter
+      const filtered = items.filter(i => {
+        if (!searchQuery) return true;
+        return i.name.toLowerCase().includes(searchQuery) ||
+               i.batch.toLowerCase().includes(searchQuery) ||
+               i.expiry.toLowerCase().includes(searchQuery);
+      });
+
+      // Pagination slice
+      const displayed = filtered.slice(0, visibleCount);
+
+      // Render rows
+      tbody.innerHTML = displayed.map((item, idx) => {
+        const rowTotal = (Number(item.retailPrice) || 0) * (Number(item.quantity) || 0);
+        return `
+          <tr class="group hover:bg-pink-50/30 transition-colors">
+            <td class="px-4 py-3 text-center font-mono text-slate-400 tabular-nums">${idx + 1}</td>
+            <td onclick="startInlineEdit('${item.id}', 'name', this)" class="cursor-pointer px-4 py-3 font-semibold text-slate-900 hover:text-pink-700">
+              <div class="flex items-center justify-between gap-2">
+                <span class="truncate">${item.name}</span>
+                <span class="text-slate-300 text-[10px] opacity-0 group-hover:opacity-100">✎</span>
+              </div>
+            </td>
+            <td onclick="startInlineEdit('${item.id}', 'batch', this)" class="cursor-pointer px-4 py-3 text-center font-mono text-slate-700">
+              <span class="rounded bg-amber-50/70 border border-amber-200/50 px-2 py-0.5 text-[11px] font-medium text-amber-900">${item.batch || '—'}</span>
+            </td>
+            <td onclick="startInlineEdit('${item.id}', 'expiry', this)" class="cursor-pointer px-4 py-3 text-center font-mono text-slate-600">
+              ${item.expiry || '—'}
+            </td>
+            <td onclick="startInlineEdit('${item.id}', 'retailPrice', this)" class="cursor-pointer px-4 py-3 text-right font-mono text-slate-800 tabular-nums">
+              ${Number(item.retailPrice || 0).toFixed(2)}
+            </td>
+            <td class="px-4 py-3 text-center font-mono">
+              <div class="inline-flex items-center justify-center gap-1.5 select-none">
+                <button type="button" onclick="stepQuantity('${item.id}', -1)" ${item.quantity <= 1 ? 'disabled' : ''}
+                  class="inline-flex h-6 w-6 items-center justify-center rounded-md border border-rose-200/80 bg-white text-slate-600 hover:bg-pink-50 hover:text-pink-700 active:scale-95 disabled:opacity-30 disabled:pointer-events-none transition-all cursor-pointer shadow-2xs">
+                  -
+                </button>
+                <span onclick="startInlineEdit('${item.id}', 'quantity', this)" class="min-w-7 text-center font-bold text-slate-900 text-xs tabular-nums cursor-pointer hover:text-pink-700 py-0.5 px-1 rounded hover:bg-pink-50">
+                  ${item.quantity}
+                </span>
+                <button type="button" onclick="stepQuantity('${item.id}', 1)"
+                  class="inline-flex h-6 w-6 items-center justify-center rounded-md border border-rose-200/80 bg-white text-slate-600 hover:bg-pink-50 hover:text-pink-700 active:scale-95 transition-all cursor-pointer shadow-2xs">
+                  +
+                </button>
+              </div>
+            </td>
+            <td class="px-4 py-3 text-right font-mono font-bold text-pink-700 tabular-nums">${formatCurrency(rowTotal)}</td>
+            <td class="px-4 py-3 text-center">
+              <button type="button" onclick="deleteItem('${item.id}')" class="inline-flex h-7 w-7 items-center justify-center rounded-lg text-slate-400 hover:bg-rose-50 hover:text-rose-600 transition-colors cursor-pointer" title="Delete medicine">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      // Pagination controls
+      const pagRow = document.getElementById('row-pagination');
+      if (filtered.length > 10) {
+        pagRow.classList.remove('hidden');
+        document.getElementById('text-pagination-showing').textContent = `Showing ${displayed.length} of ${filtered.length} items`;
+        document.getElementById('btn-show-more').classList.toggle('hidden', visibleCount >= filtered.length);
+        document.getElementById('btn-show-less').classList.toggle('hidden', visibleCount <= 10);
+      } else {
+        pagRow.classList.add('hidden');
+      }
+
+      // Footers (always ALL items)
+      const totalUnits = items.reduce((acc, i) => acc + (Number(i.quantity) || 0), 0);
+      const grandTotal = items.reduce((acc, i) => acc + (Number(i.retailPrice) || 0) * (Number(i.quantity) || 0), 0);
+      document.getElementById('foot-item-count').textContent = items.length;
+      document.getElementById('foot-total-units').textContent = totalUnits;
+      document.getElementById('foot-grand-total').textContent = formatCurrency(grandTotal);
+    }
+
+    // --- VIEW SWITCHING & HISTORY ---
+    function switchView(v) {
+      currentView = v;
+      document.getElementById('view-editor').classList.toggle('hidden', v !== 'editor');
+      document.getElementById('view-history').classList.toggle('hidden', v !== 'history');
+
+      const tabEd = document.getElementById('tab-editor');
+      const tabHi = document.getElementById('tab-history');
+      if (v === 'editor') {
+        tabEd.className = 'flex items-center gap-1.5 rounded-lg px-3 py-1.5 transition-all bg-white text-pink-900 font-bold shadow-xs cursor-pointer';
+        tabHi.className = 'flex items-center gap-1.5 rounded-lg px-3 py-1.5 transition-all text-slate-600 hover:text-slate-900 cursor-pointer';
+      } else {
+        tabEd.className = 'flex items-center gap-1.5 rounded-lg px-3 py-1.5 transition-all text-slate-600 hover:text-slate-900 cursor-pointer';
+        tabHi.className = 'flex items-center gap-1.5 rounded-lg px-3 py-1.5 transition-all bg-white text-pink-900 font-bold shadow-xs cursor-pointer';
+      }
+    }
+
+    function renderHistoryView() {
+      const container = document.getElementById('history-container');
+      const badge = document.getElementById('history-header-badge');
+      badge.textContent = `${savedLists.length} / 10 Saved`;
+
+      if (savedLists.length === 0) {
+        container.innerHTML = `
+          <div class="rounded-2xl border border-slate-200 bg-white p-12 text-center shadow-xs">
+            <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-50 text-amber-600 ring-8 ring-amber-50/50">
+              <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h3 class="mt-4 text-base font-bold text-slate-900">No Saved Lists Yet</h3>
+            <p class="mx-auto mt-1.5 max-w-sm text-xs text-slate-500 leading-relaxed">
+              When you finish entering medicines, click <span class="font-semibold text-amber-800">"Save List"</span> in the top bar. It will store the list here with its date, time, and items, keeping up to 10 latest lists.
+            </p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = savedLists.map((rec, idx) => `
+        <div class="rounded-2xl border border-rose-100 bg-[#fffdfa] shadow-xs overflow-hidden transition-all hover:border-pink-200">
+          <div class="p-4 sm:p-5">
+            <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="text-xs font-mono font-bold text-amber-600">#${idx + 1}</span>
+                  <h4 class="text-sm font-bold text-slate-900">${rec.title || `Medicine List #${idx + 1}`}</h4>
+                </div>
+                <div class="mt-1 flex flex-wrap items-center gap-3 text-xs text-slate-500">
+                  <span>${rec.dateStr}</span>
+                  <span>·</span>
+                  <span>${rec.timeStr}</span>
+                  <span>·</span>
+                  <span class="font-medium text-slate-700">${rec.itemCount} items (${rec.totalQuantity} units)</span>
+                </div>
+              </div>
+              <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+                <div class="text-right sm:mr-2">
+                  <span class="text-[10px] uppercase font-semibold text-slate-400 block">Total Amount</span>
+                  <span class="text-base font-extrabold text-pink-700 font-mono tabular-nums">${formatCurrency(rec.grandTotal)}</span>
+                </div>
+                <button type="button" onclick="openHistoryRecord('${rec.id}')" class="inline-flex items-center gap-1.5 rounded-xl border border-rose-200/80 bg-white px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-pink-50 hover:text-pink-900 shadow-2xs transition-colors cursor-pointer">
+                  Open / Edit
+                </button>
+                <button type="button" onclick="downloadSavedRecordPdf('${rec.id}')" class="inline-flex items-center gap-1.5 rounded-xl bg-pink-600 px-3 py-2 text-xs font-semibold text-white hover:bg-pink-700 shadow-2xs transition-colors cursor-pointer">
+                  PDF
+                </button>
+                <button type="button" onclick="deleteHistoryRecord('${rec.id}')" class="inline-flex h-8 w-8 items-center justify-center rounded-xl text-slate-400 hover:bg-rose-50 hover:text-rose-600 transition-colors cursor-pointer" title="Delete list">
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // --- SAVE LIST & MODALS ---
+    function openSaveModal() {
+      if (items.length === 0) return;
+      const { dateStr, timeStr } = getCurrentDateTime();
+      const totalUnits = items.reduce((acc, i) => acc + (Number(i.quantity) || 0), 0);
+      const grandTotal = items.reduce((acc, i) => acc + (Number(i.retailPrice) || 0) * (Number(i.quantity) || 0), 0);
+
+      document.getElementById('save-modal-summary').textContent = `${items.length} medicines (${totalUnits} units)`;
+      document.getElementById('save-modal-total').textContent = formatCurrency(grandTotal);
+      document.getElementById('inp-save-title').value = `Medicine List (${dateStr}, ${timeStr})`;
+      document.getElementById('save-modal').classList.remove('hidden');
+      setTimeout(() => {
+        document.getElementById('inp-save-title')?.select();
+      }, 50);
+    }
+
+    function closeSaveModal() {
+      document.getElementById('save-modal').classList.add('hidden');
+    }
+
+    function handleConfirmSave(e) {
+      if (e) e.preventDefault();
+      const title = document.getElementById('inp-save-title').value.trim() || 'Untitled Medicine List';
+      const { dateStr, timeStr } = getCurrentDateTime();
+      const totalUnits = items.reduce((acc, i) => acc + (Number(i.quantity) || 0), 0);
+      const grandTotal = items.reduce((acc, i) => acc + (Number(i.retailPrice) || 0) * (Number(i.quantity) || 0), 0);
+
+      const record = {
+        id: 'hist-' + Date.now(),
+        title,
+        dateStr,
+        timeStr,
+        itemCount: items.length,
+        totalQuantity: totalUnits,
+        grandTotal,
+        items: [...items]
+      };
+
+      // Keep only latest 10
+      savedLists.unshift(record);
+      if (savedLists.length > 10) savedLists = savedLists.slice(0, 10);
+      saveHistory();
+
+      // Clear active list for fresh start
+      items = [];
+      saveItems();
+      closeSaveModal();
+
+      showToast(`Saved "${title}" to History. Fresh list ready!`);
+      renderAll();
+      document.getElementById('inp-name')?.focus();
+    }
+
+    function openClearModal() {
+      if (items.length === 0) return;
+      document.getElementById('clear-modal-msg').textContent = `Are you sure you want to clear all ${items.length} items from the current active list?`;
+      document.getElementById('clear-modal').classList.remove('hidden');
+    }
+
+    function closeClearModal() {
+      document.getElementById('clear-modal').classList.add('hidden');
+    }
+
+    function confirmClearList() {
+      items = [];
+      saveItems();
+      closeClearModal();
+      showToast('Cleared all items from list');
+      renderAll();
+    }
+
+    function openClearHistoryModal() {
+      document.getElementById('clear-history-modal').classList.remove('hidden');
+    }
+
+    function closeClearHistoryModal() {
+      document.getElementById('clear-history-modal').classList.add('hidden');
+    }
+
+    function confirmClearHistory() {
+      savedLists = [];
+      saveHistory();
+      closeClearHistoryModal();
+      showToast('Cleared all saved lists history');
+      renderAll();
+    }
+
+    function openHistoryRecord(id) {
+      const record = savedLists.find(r => r.id === id);
+      if (!record) return;
+
+      if (items.length > 0) {
+        pendingLoadRecord = record;
+        document.getElementById('confirm-load-msg').textContent = `Your editor currently has ${items.length} items. Loading "${record.title}" will replace them. Make sure you have saved your current list if needed.`;
+        document.getElementById('confirm-load-modal').classList.remove('hidden');
+        return;
+      }
+
+      items = [...record.items];
+      saveItems();
+      switchView('editor');
+      showToast(`Loaded "${record.title}" into editor.`);
+      renderAll();
+    }
+
+    function closeConfirmLoadModal() {
+      document.getElementById('confirm-load-modal').classList.add('hidden');
+      pendingLoadRecord = null;
+    }
+
+    function confirmLoadFromHistory() {
+      if (pendingLoadRecord) {
+        items = [...pendingLoadRecord.items];
+        saveItems();
+        switchView('editor');
+        showToast(`Loaded "${pendingLoadRecord.title}" into editor.`);
+        closeConfirmLoadModal();
+        renderAll();
+      }
+    }
+
+    function deleteHistoryRecord(id) {
+      savedLists = savedLists.filter(r => r.id !== id);
+      saveHistory();
+      showToast('Removed saved list from history');
+      renderAll();
+    }
+
+    function loadSampleList() {
+      items = [...INITIAL_SAMPLE];
+      saveItems();
+      showToast('Loaded sample medicine list');
+      renderAll();
+    }
+
+    function exportCsv() {
+      if (items.length === 0) return;
+      const headers = ['#', 'Medicine Name', 'Batch No', 'Expiry', 'Retail Price', 'Quantity', 'Total'];
+      const rows = items.map((itm, i) => {
+        const lineTotal = (itm.retailPrice || 0) * (itm.quantity || 0);
+        return [
+          i + 1,
+          `"${(itm.name || '').replace(/"/g, '""')}"`,
+          `"${(itm.batch || '').replace(/"/g, '""')}"`,
+          `"${(itm.expiry || '').replace(/"/g, '""')}"`,
+          itm.retailPrice.toFixed(2),
+          itm.quantity,
+          lineTotal.toFixed(2)
+        ].join(',');
+      });
+      const csv = '\uFEFF' + [headers.join(','), ...rows].join('\r\n');
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Hassan_Pharmacy_Medicines_${new Date().toISOString().slice(0, 10)}.csv`;
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('CSV exported successfully');
+    }
+
+    // --- PDF GENERATOR (jsPDF + autoTable) ---
+    function generatePdf(itemArray, listTitle, customDateStr, customTimeStr) {
+      if (!window.jspdf || !window.jspdf.jsPDF) {
+        alert('PDF library is loading. Please try again in a second.');
+        return;
+      }
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+      const pageWidth = doc.internal.pageSize.getWidth();
+      const pageHeight = doc.internal.pageSize.getHeight();
+      const margin = 14;
+
+      const currentDt = getCurrentDateTime();
+      const dtStr = (customDateStr && customTimeStr) ? `${customDateStr} · ${customTimeStr}` : currentDt.fullStr;
+      const refId = `HP-${new Date().toISOString().slice(0, 10).replace(/-/g, '')}-${Math.floor(100 + Math.random() * 900)}`;
+
+      // Header Bar: Rose Pink
+      doc.setFillColor(225, 29, 72);
+      doc.rect(0, 0, pageWidth, 4, 'F');
+
+      // Flower Vector Accents near Title
+      const flX = pageWidth / 2 - 54;
+      const flY = 16;
+      doc.setFillColor(253, 164, 175);
+      doc.circle(flX, flY - 2, 1.6, 'F');
+      doc.circle(flX + 2, flY, 1.6, 'F');
+      doc.circle(flX, flY + 2, 1.6, 'F');
+      doc.circle(flX - 2, flY, 1.6, 'F');
+      doc.setFillColor(250, 204, 21);
+      doc.circle(flX, flY, 1.1, 'F');
+
+      const frX = pageWidth / 2 + 54;
+      doc.setFillColor(253, 164, 175);
+      doc.circle(frX, flY - 2, 1.6, 'F');
+      doc.circle(frX + 2, flY, 1.6, 'F');
+      doc.circle(frX, flY + 2, 1.6, 'F');
+      doc.circle(frX - 2, flY, 1.6, 'F');
+      doc.setFillColor(250, 204, 21);
+      doc.circle(frX, flY, 1.1, 'F');
+
+      // Pharmacy Brand Title
+      doc.setTextColor(190, 24, 93);
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(22);
+      doc.text('HASSAN PHARMACY', pageWidth / 2, 17, { align: 'center' });
+
+      // Subtitle
+      doc.setTextColor(71, 85, 105);
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(10);
+      const sub = listTitle ? `MEDICINE LIST — ${listTitle.toUpperCase()}` : 'MEDICINE INVENTORY & PRICE LIST';
+      doc.text(sub, pageWidth / 2, 23, { align: 'center' });
+
+      // Date & Time
+      doc.setTextColor(100, 116, 139);
+      doc.setFontSize(9);
+      doc.text(`Generated: ${dtStr}   |   Ref: ${refId}`, pageWidth / 2, 28, { align: 'center' });
+
+      // Separator
+      doc.setDrawColor(226, 232, 240);
+      doc.setLineWidth(0.4);
+      doc.line(margin, 32, pageWidth - margin, 32);
+
+      // Summary above table
+      const totalUnits = itemArray.reduce((acc, i) => acc + (Number(i.quantity) || 0), 0);
+      const grandTotal = itemArray.reduce((acc, i) => acc + (Number(i.retailPrice) || 0) * (Number(i.quantity) || 0), 0);
+
+      doc.setFontSize(8.5);
+      doc.setTextColor(71, 85, 105);
+      doc.setFont('helvetica', 'bold');
+      doc.text(`Total Line Items: ${itemArray.length}`, margin, 37);
+      doc.text(`Total Units: ${totalUnits}`, margin + 50, 37);
+      doc.text(`Grand Total: ${formatCurrency(grandTotal)}`, pageWidth - margin, 37, { align: 'right' });
+
+      // Rows
+      const rows = itemArray.map((itm, idx) => [
+        (idx + 1).toString(),
+        itm.name || '-',
+        itm.batch || '-',
+        itm.expiry ? normalizeExpiry(itm.expiry) : '-',
+        formatCurrency(itm.retailPrice || 0),
+        (itm.quantity || 0).toString(),
+        formatCurrency((Number(itm.retailPrice) || 0) * (Number(itm.quantity) || 0))
+      ]);
+
+      const footRow = ['', 'GRAND TOTAL', '', '', '', totalUnits.toString(), formatCurrency(grandTotal)];
+
+      doc.autoTable({
+        startY: 40,
+        head: [['#', 'Medicine Name', 'Batch No', 'Expiry', 'Retail Price', 'Qty', 'Total']],
+        body: rows,
+        foot: [footRow],
+        showHead: 'everyPage',
+        showFoot: 'lastPage',
+        margin: { left: margin, right: margin, bottom: 22 },
+        theme: 'grid',
+        styles: {
+          font: 'helvetica',
+          fontSize: 9,
+          cellPadding: 3,
+          lineColor: [226, 232, 240],
+          lineWidth: 0.2,
+          textColor: [30, 41, 59],
+          valign: 'middle'
+        },
+        headStyles: {
+          fillColor: [190, 24, 93],
+          textColor: [255, 255, 255],
+          fontStyle: 'bold',
+          fontSize: 9.5,
+          halign: 'left'
+        },
+        footStyles: {
+          fillColor: [255, 241, 242],
+          textColor: [136, 19, 55],
+          fontStyle: 'bold',
+          fontSize: 10
+        },
+        alternateRowStyles: {
+          fillColor: [255, 250, 248]
+        },
+        columnStyles: {
+          0: { halign: 'center', cellWidth: 10 },
+          1: { halign: 'left', fontStyle: 'bold' },
+          2: { halign: 'center', cellWidth: 26 },
+          3: { halign: 'center', cellWidth: 24 },
+          4: { halign: 'right', cellWidth: 28 },
+          5: { halign: 'center', cellWidth: 18, fontStyle: 'bold' },
+          6: { halign: 'right', cellWidth: 32, fontStyle: 'bold' }
+        },
+        didDrawPage: (data) => {
+          const totalPagesExp = '{total_pages_count_string}';
+          const curPage = doc.internal.getCurrentPageInfo ? doc.internal.getCurrentPageInfo().pageNumber : data.pageNumber;
+
+          doc.setFontSize(8);
+          doc.setTextColor(148, 163, 184);
+          doc.setFont('helvetica', 'normal');
+          doc.text('Hassan Pharmacy · Authorized Dispensing Record', margin, pageHeight - 11);
+          doc.text(`Page ${curPage} of ${totalPagesExp}`, pageWidth - margin, pageHeight - 11, { align: 'right' });
+
+          // Small light-gray centered credit line
+          doc.setFontSize(7.5);
+          doc.setTextColor(160, 174, 192);
+          doc.text('App built by M.Nouman 141', pageWidth / 2, pageHeight - 5, { align: 'center' });
+        }
+      });
+
+      if (typeof doc.putTotalPages === 'function') {
+        doc.putTotalPages('{total_pages_count_string}');
+      }
+
+      const dateStamp = new Date().toISOString().slice(0, 10);
+      doc.save(`Hassan_Pharmacy_Medicine_List_${dateStamp}.pdf`);
+    }
+
+    function downloadCurrentPdf() {
+      if (items.length === 0) return;
+      generatePdf(items, '');
+      showToast('PDF downloaded successfully');
+    }
+
+    function downloadSavedRecordPdf(id) {
+      const rec = savedLists.find(r => r.id === id);
+      if (!rec) return;
+      generatePdf(rec.items, rec.title, rec.dateStr, rec.timeStr);
+      showToast(`Downloaded PDF for "${rec.title}"`);
+    }
+
+    // --- TRANSIENT TOAST ---
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const text = document.getElementById('toast-text');
+      text.textContent = msg;
+      toast.classList.remove('hidden');
+      if (toastTimeout) clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 2600);
+    }
+
+    // --- EMBEDDED PWA MANIFEST & CANVAS PNG ICON GENERATOR ---
+    function setupEmbeddedManifest() {
+      try {
+        // Generate valid 192x192 and 512x512 PNG Data URLs on-the-fly using Canvas
+        const icon192Png = generateCanvasIcon(192, false);
+        const icon512Png = generateCanvasIcon(512, false);
+        const icon512Maskable = generateCanvasIcon(512, true);
+
+        // Update favicon and apple-touch-icon with crisp PNG data URLs
+        if (icon192Png) {
+          document.getElementById('apple-icon-link')?.setAttribute('href', icon192Png);
+          document.getElementById('favicon-png')?.setAttribute('href', icon192Png);
+        }
+
+        const manifestData = {
+          id: './',
+          name: 'Hassan Pharmacy',
+          short_name: 'Pharmacy',
+          description: 'Fast keyboard-first medicine inventory, quotation list maker and PDF generator for Hassan Pharmacy.',
+          start_url: './',
+          scope: './',
+          display: 'standalone',
+          orientation: 'portrait-primary',
+          background_color: '#ffffff',
+          theme_color: '#ffffff',
+          categories: ['medical', 'business', 'utilities'],
+          icons: [
+            {
+              src: icon192Png || "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192' width='192' height='192'><rect width='192' height='192' rx='40' fill='%23be185d'/><path d='M96 40v112M40 96h112' stroke='%23ffffff' stroke-width='28' stroke-linecap='round'/><circle cx='96' cy='96' r='18' fill='%23facc15'/><circle cx='96' cy='96' r='9' fill='%23eab308'/></svg>",
+              sizes: '192x192',
+              type: 'image/png',
+              purpose: 'any'
+            },
+            {
+              src: icon512Png || "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' width='512' height='512'><rect width='512' height='512' rx='110' fill='%23be185d'/><path d='M256 100v312M100 256h312' stroke='%23ffffff' stroke-width='75' stroke-linecap='round'/><circle cx='256' cy='256' r='48' fill='%23facc15'/><circle cx='256' cy='256' r='24' fill='%23eab308'/></svg>",
+              sizes: '512x512',
+              type: 'image/png',
+              purpose: 'any'
+            },
+            {
+              src: icon512Maskable || "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' width='512' height='512'><rect width='512' height='512' fill='%23be185d'/><path d='M256 120v272M120 256h272' stroke='%23ffffff' stroke-width='65' stroke-linecap='round'/><circle cx='256' cy='256' r='42' fill='%23facc15'/><circle cx='256' cy='256' r='21' fill='%23eab308'/></svg>",
+              sizes: '512x512',
+              type: 'image/png',
+              purpose: 'maskable'
+            }
+          ]
+        };
+
+        // Create Blob URL for the manifest
+        const manifestBlob = new Blob([JSON.stringify(manifestData, null, 2)], {
+          type: 'application/manifest+json'
+        });
+        const manifestBlobUrl = URL.createObjectURL(manifestBlob);
+        const manifestLink = document.getElementById('manifest-link');
+        if (manifestLink) {
+          manifestLink.setAttribute('href', manifestBlobUrl);
+        }
+      } catch (err) {
+        console.warn('[PWA] Error setting up embedded dynamic manifest:', err);
+      }
+    }
+
+    function generateCanvasIcon(size, isMaskable) {
+      try {
+        const canvas = document.createElement('canvas');
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return '';
+
+        const cx = size / 2;
+        const cy = size / 2;
+
+        if (isMaskable) {
+          // Full-bleed gradient background for maskable icon
+          const grad = ctx.createLinearGradient(0, 0, size, size);
+          grad.addColorStop(0, '#f43f5e');
+          grad.addColorStop(1, '#be185d');
+          ctx.fillStyle = grad;
+          ctx.fillRect(0, 0, size, size);
+        } else {
+          // Rounded badge for standard icon
+          const r = size * 0.22;
+          ctx.beginPath();
+          if (typeof ctx.roundRect === 'function') {
+            ctx.roundRect(size * 0.03, size * 0.03, size * 0.94, size * 0.94, r);
+          } else {
+            ctx.arc(cx, cy, size * 0.46, 0, Math.PI * 2);
+          }
+          const grad = ctx.createLinearGradient(0, 0, size, size);
+          grad.addColorStop(0, '#f43f5e');
+          grad.addColorStop(1, '#be185d');
+          ctx.fillStyle = grad;
+          ctx.fill();
+        }
+
+        // Pharmacy Cross Emblem
+        const scale = isMaskable ? 0.65 : 0.82;
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.fillStyle = '#ffffff';
+
+        const wBar = size * 0.62 * scale;
+        const hBar = size * 0.22 * scale;
+        const rBar = size * 0.05 * scale;
+
+        // Horizontal Bar
+        ctx.beginPath();
+        if (typeof ctx.roundRect === 'function') {
+          ctx.roundRect(-wBar / 2, -hBar / 2, wBar, hBar, rBar);
+        } else {
+          ctx.rect(-wBar / 2, -hBar / 2, wBar, hBar);
+        }
+        ctx.fill();
+
+        // Vertical Bar
+        ctx.beginPath();
+        if (typeof ctx.roundRect === 'function') {
+          ctx.roundRect(-hBar / 2, -wBar / 2, hBar, wBar, rBar);
+        } else {
+          ctx.rect(-hBar / 2, -wBar / 2, hBar, wBar);
+        }
+        ctx.fill();
+
+        // Yellow Blossom Center
+        ctx.beginPath();
+        ctx.arc(0, 0, size * 0.12 * scale, 0, Math.PI * 2);
+        ctx.fillStyle = '#facc15';
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(0, 0, size * 0.06 * scale, 0, Math.PI * 2);
+        ctx.fillStyle = '#eab308';
+        ctx.fill();
+
+        ctx.restore();
+
+        return canvas.toDataURL('image/png');
+      } catch (e) {
+        console.warn('[PWA] Canvas icon generation error:', e);
+        return '';
+      }
+    }
+
+    // --- EMBEDDED SERVICE WORKER VIA JAVASCRIPT BLOB ---
+    const SW_SCRIPT_SOURCE = `
+const CACHE_NAME = 'hassan-pharmacy-cache-v1';
+const ASSETS_TO_PRECACHE = [
+  './',
+  'https://cdn.tailwindcss.com',
+  'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js',
+  'https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js',
+  'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap'
+];
+
+self.addEventListener('install', (event) => {
+  self.skipWaiting();
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => {
+      return Promise.allSettled(
+        ASSETS_TO_PRECACHE.map((url) => {
+          return fetch(url, { mode: url.startsWith('http') ? 'cors' : 'same-origin' })
+            .then((res) => {
+              if (res && (res.status === 200 || res.type === 'opaque')) {
+                return cache.put(url, res);
+              }
+            })
+            .catch(() => {});
+        })
+      );
+    })
+  );
+});
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys().then((keys) => {
+      return Promise.all(
+        keys.map((k) => (k !== CACHE_NAME ? caches.delete(k) : null))
+      );
+    }).then(() => self.clients.claim())
+  );
+});
+
+self.addEventListener('fetch', (event) => {
+  const req = event.request;
+  if (req.method !== 'GET') return;
+
+  // Navigations (HTML page)
+  if (req.mode === 'navigate' || req.headers.get('accept')?.includes('text/html')) {
+    event.respondWith(
+      fetch(req)
+        .then((networkRes) => {
+          if (networkRes && networkRes.status === 200) {
+            const clone = networkRes.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(req, clone));
+          }
+          return networkRes;
+        })
+        .catch(() => {
+          return caches.match(req).then((cached) => {
+            return cached || caches.match('./') || caches.match('./index.html');
+          });
+        })
+    );
+    return;
+  }
+
+  // Assets and CDNs: Cache-first, background refresh (stale-while-revalidate)
+  event.respondWith(
+    caches.match(req).then((cached) => {
+      if (cached) {
+        fetch(req)
+          .then((networkRes) => {
+            if (networkRes && (networkRes.status === 200 || networkRes.type === 'opaque')) {
+              caches.open(CACHE_NAME).then((cache) => cache.put(req, networkRes));
+            }
+          })
+          .catch(() => {});
+        return cached;
+      }
+
+      return fetch(req)
+        .then((networkRes) => {
+          if (networkRes && (networkRes.status === 200 || networkRes.type === 'opaque')) {
+            const clone = networkRes.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(req, clone));
+          }
+          return networkRes;
+        })
+        .catch(() => new Response('', { status: 408, statusText: 'Offline' }));
+    })
+  );
+});
+`;
+
+    function initEmbeddedServiceWorker() {
+      if (!('serviceWorker' in navigator)) return;
+
+      window.addEventListener('load', () => {
+        try {
+          // Embed Service Worker script via JavaScript Blob object
+          const swBlob = new Blob([SW_SCRIPT_SOURCE], { type: 'application/javascript' });
+          const swBlobUrl = URL.createObjectURL(swBlob);
+
+          // Register with relative scope: './' for GitHub Pages subdirectories
+          navigator.serviceWorker.register(swBlobUrl, { scope: './' })
+            .then((registration) => {
+              console.log('[PWA] Service Worker registered via Blob with scope:', registration.scope);
+            })
+            .catch((blobError) => {
+              console.warn('[PWA] Blob Service Worker registration not supported by browser, trying ./sw.js fallback:', blobError);
+              navigator.serviceWorker.register('./sw.js', { scope: './' })
+                .then((registration) => {
+                  console.log('[PWA] Fallback ./sw.js registered with scope:', registration.scope);
+                })
+                .catch((fallbackErr) => {
+                  console.warn('[PWA] Fallback service worker registration error:', fallbackErr);
+                });
+            });
+        } catch (e) {
+          console.warn('[PWA] Service Worker registration error:', e);
+        }
+      });
+    }
+
+    // --- PWA INSTALLATION & OFFLINE DETECTION ---
+    let deferredInstallPrompt = null;
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches ||
+      (window.navigator.standalone === true);
+    const isIOSDevice = /iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase());
+
+    function initPWAInstall() {
+      const installBtn = document.getElementById('btn-install-pwa');
+      if (!installBtn) return;
+
+      if (isStandalone) {
+        installBtn.classList.add('hidden');
+        return;
+      }
+
+      if (isIOSDevice) {
+        installBtn.classList.remove('hidden');
+        const txt = document.getElementById('btn-install-pwa-text');
+        if (txt) txt.textContent = 'Install App';
+      }
+
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredInstallPrompt = e;
+        installBtn.classList.remove('hidden');
+      });
+
+      window.addEventListener('appinstalled', () => {
+        deferredInstallPrompt = null;
+        installBtn.classList.add('hidden');
+        showToast('Hassan Pharmacy installed successfully!');
+      });
+    }
+
+    function handlePWAInstallClick() {
+      if (deferredInstallPrompt) {
+        deferredInstallPrompt.prompt();
+        deferredInstallPrompt.userChoice.then((choice) => {
+          if (choice.outcome === 'accepted') {
+            document.getElementById('btn-install-pwa')?.classList.add('hidden');
+            showToast('Installing Hassan Pharmacy...');
+          }
+          deferredInstallPrompt = null;
+        });
+      } else if (isIOSDevice) {
+        document.getElementById('ios-install-modal')?.classList.remove('hidden');
+      } else {
+        showToast('Ready for offline use. You can also pin or bookmark this app.');
+      }
+    }
+
+    function closeIOSInstallModal() {
+      document.getElementById('ios-install-modal')?.classList.add('hidden');
+    }
+
+    function initOnlineStatus() {
+      const updateStatus = () => {
+        const offlineBanner = document.getElementById('offline-indicator');
+        if (!navigator.onLine) {
+          offlineBanner?.classList.remove('hidden');
+        } else {
+          offlineBanner?.classList.add('hidden');
+        }
+      };
+      window.addEventListener('online', updateStatus);
+      window.addEventListener('offline', updateStatus);
+      updateStatus();
+    }
+  </script>
+</body>
+</html>
